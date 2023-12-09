@@ -1,2 +1,2 @@
-# exlauncher-
+# exlauncher
 Experiment Launcher
