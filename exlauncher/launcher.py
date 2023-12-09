@@ -2,8 +2,9 @@ import os, sys
 import copy
 from importlib import import_module
 import traceback
+from shutil import which
 
-from exlauncher.utils import to_duration, convert_to_command_line, which
+from exlauncher.utils import to_duration, convert_to_command_line
 
 class Launcher(object):
     def __init__(self, exp_name, exp_file, log_dir, n_seeds=1,
@@ -193,8 +194,6 @@ echo "########################################################################"
 
     def add_experiment(self, **kwargs):
         self._experiments.append(copy.deepcopy(kwargs))
-
-
 
     @property
     def exp_file_path(self):

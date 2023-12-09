@@ -1,5 +1,6 @@
 import os, sys
 import subprocess
+from shutil import which
 
 def to_duration(days, hours, minutes, seconds):
     h = "0" + str(hours) if hours < 10 else str(hours)
@@ -25,15 +26,5 @@ def convert_to_command_line(exp):
 
     return command_line
 
-def which(name):
-    try:
-        # Run 'which zsh' command
-        result = subprocess.run(['which', name], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-        # Extract the path from the output
-        path = result.stdout.strip()
-        return path
-    except subprocess.CalledProcessError as e:
-        # Handle any errors that occur during subprocess execution
-        print("An error occurred: ", e)
-        return None
+def is_local():
+    return which('sbatch') is None
